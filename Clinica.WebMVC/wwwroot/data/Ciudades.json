@@ -1,0 +1,19 @@
+[
+  {
+    "codigo": "01",
+    "nombre": "Ciudad de Mexico"
+  },
+  {
+    "codigo": "02",
+    "nombre": "Estado de Mexico"
+  },
+  {
+    "codigo": "03",
+    "nombre": "Tlaxcala"
+  },
+  {
+    "codigo": "04",
+    "nombre": "Monterrey"
+  }
+
+]

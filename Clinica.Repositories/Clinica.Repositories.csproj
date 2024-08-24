@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Clinica.AccesoADatos\Clinica.AccesoADatos.csproj" />
+    <ProjectReference Include="..\Clinica.Common\Clinica.Common.csproj" />
+    <ProjectReference Include="..\Clinica.Entities\Clinica.Entities.csproj" />
+    <ProjectReference Include="..\ClinicaModels\Clinica.Models.csproj" />
+  </ItemGroup>
+
+</Project>

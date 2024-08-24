@@ -1,0 +1,82 @@
+[
+  {
+    "codigoCiudad": "01",
+    "codigo": "01",
+    "nombre": "iztacalco"
+  },
+  {
+    "codigoCiudad": "01",
+    "codigo": "02",
+    "nombre": "Benito Juarez"
+  },
+  {
+    "codigoCiudad": "01",
+    "codigo": "03",
+    "nombre": "Coyoacan"
+  },
+  {
+    "codigoCiudad": "01",
+    "codigo": "04",
+    "nombre": "Azcapotzalco"
+  },
+  {
+    "codigoCiudad": "02",
+    "codigo": "05",
+    "nombre": "Chimalhuacan"
+  },
+  {
+    "codigoCiudad": "02",
+    "codigo": "06",
+    "nombre": "Cuautitlan Izcalli"
+  },
+  {
+    "codigoCiudad": "02",
+    "codigo": "07",
+    "nombre": "Ixtapan de la Sal"
+  },
+  {
+    "codigoCiudad": "02",
+    "codigo": "08",
+    "nombre": "Naucalpan"
+  },
+  {
+    "codigoCiudad": "03",
+    "codigo": "09",
+    "nombre": "Apetatitlon."
+  },
+  {
+    "codigoCiudad": "03",
+    "codigo": "10",
+    "nombre": "Santa Ana Chiautempan"
+  },
+  {
+    "codigoCiudad": "03",
+    "codigo": "11",
+    "nombre": "Hueyotlipan"
+  },
+  {
+    "codigoCiudad": "03",
+    "codigo": "12",
+    "nombre": "San Felipe Yxtacuixtla"
+  },
+  {
+    "codigoCiudad": "04",
+    "codigo": "13",
+    "nombre": "Apodaca"
+  },
+  {
+    "codigoCiudad": "04",
+    "codigo": "14",
+    "nombre": "Aramberri"
+  },
+  {
+    "codigoCiudad": "04",
+    "codigo": "15",
+    "nombre": "Bustamante"
+  },
+  {
+    "codigoCiudad": "04",
+    "codigo": "16",
+    "nombre": "Cadereyta Jim�nez"
+  }
+]

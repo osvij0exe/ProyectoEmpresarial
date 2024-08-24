@@ -1,0 +1,174 @@
+﻿@model ConsultaViewModel
+
+@{
+    ViewBag.TItle = "Consultas";
+    Layout = "_Layout";
+}
+
+<h2 class="text-uppercase mb-5">Listado de Consultas</h2>
+
+
+<form>
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                @Html.LabelFor(m => m.NombreMedico, new {@class = "form-label"})
+                @Html.TextBoxFor(m => m.NombreMedico, new{@class = "form-control"})
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                @Html.LabelFor(m => m.ApellidoMedico, new {@class = "form-label"})
+                @Html.TextBoxFor(m => m.ApellidoMedico, new{@class = "form-control"})
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-2">
+                @Html.LabelFor(m => m.EspecialidadSeleccionada, new {@class = "form-label"})
+                @Html.DropDownListFor(m => m.EspecialidadSeleccionada,
+                new SelectList(Model.Especialidades,"Id","NombreEspecialidad"),"Todos", new {@class = "form-Select"})
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-2">
+                @Html.LabelFor(m => m.SituacionSeleccionada, new {@class = "form-label"})
+                @Html.DropDownListFor(m => m.SituacionSeleccionada, 
+                new SelectList(Model.SituacionConsulta,"Codigo","Nombre"),"Todos", new {@class = "form-Select"})
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <div class="mb-2">
+                @Html.LabelFor(m => m.NombrePaciente, new {@class = "form-label"})
+                @Html.TextBoxFor(m => m.NombrePaciente, new{@class = "form-control"})
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-2">
+                @Html.LabelFor(m => m.ApellidoPaciente, new {@class = "form-label"})
+                @Html.TextBoxFor(m => m.ApellidoPaciente, new{@class = "form-control"})
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-2">
+                <label asp-for="FechaCita" class="form-label"></label>
+                <input type="date" asp-for="FechaCita" asp-format="dd/MM/yyyy" class="form-control" />
+            </div>
+        </div>
+            <div class="col-auto justify-content-end">
+                <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search me-1"></i>Buscar</button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-outline-primary" type="reset"><i class="bi bi-eraser"></i>Borrar</button>
+            </div>
+            <div class="col-auto">
+                <a class="btn btn-primary"asp-controller="Consulta" asp-action="Crear" type="submit"><i class="bi bi-plus-circle"></i>Crear</a>
+            </div>
+    </div>
+    <div class="row">
+        <div>
+            Mostrar
+            <select id="pageSize" class="form-select-sm" asp-for="Rows">
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>50</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mt-4">
+        @if (Model.Consultas is null)
+        {
+            <p>Sin Resultados</p>
+        }
+        else if (!Model.Consultas.Any())
+        {
+            <p>Sin Datos para mostrar</p>
+        }
+        else
+        {
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre Medico</th>
+                        <th>Apellido Medico</th>
+                        <th>Nombre Paciente</th>
+                        <th>Apellido Paciente</th>
+                        <th>Especiaidad</th>
+                        <th>Situacion</th>
+                        <th>Fecha Cita</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Consultas)
+                    {
+                        <tr>
+                            <td>@item.Medico.Nombres</td>
+                            <td>@item.Medico.Apellidos</td>
+                            <td>@item.Paciente.Nombres</td>
+                            <td>@item.Paciente.Apellidos</td>
+                            <td>@item.Especialidad</td>
+                            <td>@item.Situacion</td>
+                            <td>@item.FechaCita</td>
+                            <td>
+                                <i class="bi bi-check-circle"></i>
+                                <i class="bi bi-pencil"></i>
+                                <i class="bi bi-trash3"></i>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+        <div class="row justify-content-end">
+            <div class="col-auto">
+                <button class="btn btn-outline-danger"><i class="bi bi-filetype-pdf md-1"></i>Exportar</button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-outline-success"><i class="bi bi-file-excel"></i>Exportar</button>
+            </div>
+        </div>
+    <div class="container">
+        <partial name="_DataPager" model="ViewBag.Pager" />
+        <input type="hidden" id="currentPage" asp-for="Page">
+    </div>
+
+</form>
+
+@section Scripts
+{
+    <script>
+        function setCurrentPage(data){
+            let hiddenValue = document.getElementById('CurrentPage');
+            hiddenValue.value = data;
+            console.log(data);
+        }
+
+        function setPreviousPage(data){
+            let totalPages = @ViewBag.Pager.TotalPages;
+            if(data <= totalPages)
+            {
+                data--;
+                if(data === 0){
+                    data = 1;
+                }
+
+                setCurrentPage(data);
+            }
+        }
+        function setNextPage(data){
+            let totalPages = @ViewBag.Pager.TotalPages;
+            if (data < totalPages) 
+            { 
+                data++
+            }
+        }
+
+    </script>
+}
+
+

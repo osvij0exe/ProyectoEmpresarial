@@ -1,0 +1,14 @@
+﻿#image-de-fondo {
+    background-image: url('/assets/images/Article-Academic-Health-Centers-927897070.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    
+}
+
+#menu{
+    background-color: #f0f0f0;
+    padding: 20px;
+    height: 100vh;
+}

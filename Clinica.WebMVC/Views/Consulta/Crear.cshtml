@@ -1,0 +1,56 @@
+﻿@model FormConsultaViewModel
+
+@{
+    ViewBag.Title = "Agendar Consulta";
+    Layout = "_Layout";
+}
+
+<h2 class="text-uppercase mt-2 mb-5">Agendar Consulta</h2>
+
+<form method="post">
+    <div class="row gx-5 mb-3">
+        <div class="col-5">
+            @Html.LabelFor(m=>m.Input.EspecialidadId, new{@class = "form-label"})
+            @Html.DropDownListFor(m => m.Input.EspecialidadId,
+            new SelectList(Model.Especialidades,"Id","NombreEspecialidad"),"Todos", new {@class = "form-Select"})
+        </div>
+        <div class="col-7">
+            @Html.LabelFor(m=>m.Input.MedicoId,new{@class = "form-label"})
+            <div class="input-group">
+                <input type="text" class="form-control" id="medico" />
+                <span class="input-group-text" id="addon-medico">
+                    <i class="bi bi-person-badge"></i>
+                </span>
+            </div>
+            @Html.HiddenFor(m=>m.Input.MedicoId, new {id = "hiddenMedicoId"})
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <label asp-for="Input.FechaCita" class="form-label"></label>
+            <input type="date" asp-for="Input.FechaCita" asp-format="dd/MM/yyyy" class="form-control" />
+        </div>
+        <div class="col-2">
+            <label asp-for="Input.HoraCita" class="form-label"></label>
+            <input type="time" asp-for="Input.HoraCita" asp-format="HH:mm" class="form-control" />
+        </div>
+        <div class="col">
+            @Html.LabelFor(m=>m.Input.PacienteId,new{@class = "form-label"})
+            <div class="input-group">
+                <input type="text" class="form-control" id="medico" />
+                <span class="input-group-text" id="addon-medico">
+                    <i class="bi bi-person-badge"></i>
+                </span>
+            </div>
+            @Html.HiddenFor(m=>m.Input.PacienteId, new {id = "hiddenMedicoId"})
+        </div>
+    </div>
+    <div class="row mt-2 mb-5">
+        <div class="col offset-5">
+            <a asp-controller="Consulta" asp-action="Index" class="btn btn-outline-primary"><i class="bi bi-x-square"></i>Cancelar</a>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary"><i class="bi bi-floppy2-fill"></i>Guardar</button>
+        </div>
+    </div>
+</form>
